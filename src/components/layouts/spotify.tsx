@@ -4,7 +4,27 @@ import { cn } from '@/lib/utils';
 import { Spotify as Icon } from '@/components/icons/simple-icons';
 import UnstyledLink, { type UnstyledLinkProps } from '@/components/links/unstyledlink';
 import { Skeleton } from '../ui/skeleton';
-import { SpotifyData, SpotifyLastPlayed } from '@/types/spotify';
+
+interface SpotifyData {
+  isPlaying: boolean;
+  title: string;
+  album: {
+    id: string;
+    name: string;
+    images: {
+      url: string;
+    }[];
+  };
+  artist: string;
+  songUrl: string;
+}
+
+interface SpotifyLastPlayed {
+  title: string;
+  album: string;
+  songUrl: string;
+  artist: string;
+}
 
 export function SpotifyActivity({
   className,
