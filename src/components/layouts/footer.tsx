@@ -32,7 +32,7 @@ export const Footer = () => {
         </div>
         <div className="flex flex-col-reverse place-items-center justify-center gap-6">
           <p className="flex gap-3 text-sm font-medium text-text/60 sm:text-center">
-            © 2024 yogyy.
+            © 2025 yogyy.
           </p>
           <div className="flex flex-col items-center">
             <p className="text-text/60">Reach me out</p>
