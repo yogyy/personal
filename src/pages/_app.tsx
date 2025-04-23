@@ -17,7 +17,7 @@ Router.events.on('routeChangeComplete', nProgress.done);
 
 if (typeof window !== 'undefined' && isProd) {
   posthog.init(env.NEXT_PUBLIC_POSTHOG_KEY, {
-    api_host: 'https://app.posthog.com',
+    api_host: isProd ? 'https://yogyy.vercel.app/ingest' : 'http://localhost:3000/ingest',
   });
 }
 const loadFeatures = () => import('@/lib/features').then(res => res.default);
