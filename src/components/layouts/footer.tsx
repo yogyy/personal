@@ -36,7 +36,7 @@ export const Footer = () => {
           </p>
           <div className="flex flex-col items-center">
             <p className="text-text/60">Reach me out</p>
-            <ul className="relative my-auto flex gap-x-3 text-xl md:gap-x-5">
+            <ul className="relative my-auto flex gap-x-3 pt-2 text-xl md:gap-x-5">
               {footerLinks.map(link => (
                 <li key={link.href} className="inline-flex items-center">
                   <TooltipProvider delayDuration={300}>
