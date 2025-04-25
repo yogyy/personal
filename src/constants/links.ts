@@ -1,4 +1,4 @@
-import { FileUser, MailPlus } from 'lucide-react';
+import { FileUser, MailPlus } from '@/components/icons/internal';
 import { Github, LinkedIn, X } from '@/components/icons/simple-icons';
 
 const externalUrl = [

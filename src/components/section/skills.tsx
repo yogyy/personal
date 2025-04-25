@@ -1,5 +1,5 @@
 import { HTMLMotionProps, m } from 'framer-motion';
-import { CodeXml, Terminal } from 'lucide-react';
+import { CodeXml, Terminal } from '@/components/icons/internal';
 import { easeOutquad } from '@/constants/framer-easing';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
@@ -36,7 +36,7 @@ export const SkillSection = ({ className, inView, ...props }: SkillSectionProps)
             className="relative flex h-max max-h-[260px] flex-1 flex-col justify-between gap-4 overflow-hidden rounded-md border bg-card p-4"
           >
             <div className="flex flex-row items-center gap-3">
-              <CodeXml size={24} className="shrink-0 text-accent" />
+              <CodeXml className="h-6 w-6 shrink-0 text-accent" />
               <h2 className="text-lg lg:text-xl">Web development</h2>
             </div>
             <p className="text-sm sm:text-base">
@@ -50,7 +50,7 @@ export const SkillSection = ({ className, inView, ...props }: SkillSectionProps)
             className="flex max-h-[260px] flex-1 flex-col gap-4 overflow-hidden rounded-md border bg-card p-4"
           >
             <div className="flex flex-row flex-nowrap items-center gap-3">
-              <Terminal size={24} className="shrink-0 text-accent" />
+              <Terminal className="h-6 w-6 shrink-0 text-accent" />
               <h3 className="text-lg lg:text-xl">Other technologies</h3>
             </div>
             <div className="text-sm sm:text-base">

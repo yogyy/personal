@@ -85,7 +85,7 @@ export const HeroSection = () => {
                       )}
                       href={url.href}
                     >
-                      <url.icon size={20} />
+                      <url.icon className="h-5 w-5" />
                       <span>{url.name}</span>
                     </UnstyledLink>
                   </li>

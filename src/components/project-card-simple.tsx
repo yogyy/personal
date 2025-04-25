@@ -1,5 +1,5 @@
-import { Globe } from 'lucide-react';
 import { ProjectCardSimple as SimpleProject } from '@/constants/simple-project';
+import { Globe } from './icons/internal';
 import { Github } from './icons/simple-icons';
 import UnstyledLink from './links/unstyledlink';
 

@@ -40,10 +40,7 @@ export default function AboutPage() {
               <Accent>Fav Tech Stack</Accent>
             </h2>
             <div className="-ml-2">
-              <TechMdx
-                techs={['react', 'nextjs', 'tailwindcss', 'shadcnui', 'reactquery']}
-                size={32}
-              />
+              <TechMdx techs={['react', 'nextjs', 'tailwindcss', 'shadcnui', 'reactquery']} />
             </div>
           </div>
         </>

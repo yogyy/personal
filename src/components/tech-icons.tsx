@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import {
+  Hono,
   Mongodb,
   Nextdotjs,
   Nodedotjs,
   React,
   Reactquery,
   Shadcnui,
+  Sqlite,
+  Svelte,
   Tailwindcss,
   Upstash,
 } from './icons/simple-icons';
@@ -15,10 +18,9 @@ export type TechListType = keyof typeof techList;
 
 export type TechIconsProps = {
   techs: Array<TechListType>;
-  size?: number;
 } & React.ComponentPropsWithoutRef<'ul'>;
 
-export default function TechMdx({ techs, size }: TechIconsProps) {
+export default function TechMdx({ techs }: TechIconsProps) {
   return (
     <ul className="flex w-fit flex-wrap gap-2">
       {techs.map(tech => {
@@ -32,10 +34,7 @@ export default function TechMdx({ techs, size }: TechIconsProps) {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href={current.link} className="group outline-none" target="_blank">
-                    <current.icon
-                      size={size}
-                      className="transition-colors duration-200 group-hover:text-accent group-focus:text-accent"
-                    />
+                    <current.icon className="h-6 w-6 transition-colors duration-200 group-hover:text-accent group-focus:text-accent" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent sideOffset={8} className="duration-300">
@@ -65,6 +64,21 @@ const techList = {
     icon: Nextdotjs,
     name: 'Next JS',
     link: 'https://nextjs.org/',
+  },
+  hono: {
+    icon: Hono,
+    name: 'Hono',
+    link: 'https://hono.dev/',
+  },
+  sqlite: {
+    icon: Sqlite,
+    name: 'SQLite',
+    link: 'https://www.sqlite.org/index.html',
+  },
+  sveltekit: {
+    icon: Svelte,
+    name: 'SvelteKit',
+    link: 'https://svelte.dev/docs/kit/introduction',
   },
   tailwindcss: {
     icon: Tailwindcss,

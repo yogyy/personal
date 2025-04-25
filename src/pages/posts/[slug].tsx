@@ -1,10 +1,10 @@
 import { allPosts } from 'contentlayer/generated';
-import { ArrowLeft } from 'lucide-react';
 import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { notFound } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getTableOfContents, TableOfContents } from '@/lib/toc';
+import { ArrowLeft } from '@/components/icons/internal';
 import { RootLayout } from '@/components/layouts/root-layout';
 import { Mdx } from '@/components/mdx/mdx-component';
 import { DocsPageHeader } from '@/components/mdx/page-header';
@@ -49,10 +49,7 @@ export const PostsPage = ({ post }: InferGetStaticPropsType<typeof getStaticProp
               onClick={() => back()}
               className="animated-underline group flex items-center gap-3 font-semibold focus:outline-none"
             >
-              <ArrowLeft
-                className="group-focus-within:text-accent group-hover:text-accent"
-                size={20}
-              />{' '}
+              <ArrowLeft className="h-5 w-5 group-focus-within:text-accent group-hover:text-accent" />{' '}
               Go Back
             </button>
             <blockquote className="[&>*]:text-muted-foreground mt-6 border-l-2 pl-6 italic">

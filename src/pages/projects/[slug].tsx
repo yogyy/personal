@@ -1,10 +1,10 @@
 import { allProjects } from 'contentlayer/generated';
 import { m } from 'framer-motion';
-import { Link, UserRound } from 'lucide-react';
 import { InferGetStaticPropsType } from 'next';
 import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getTableOfContents, TableOfContents } from '@/lib/toc';
+import { Link, UserRound } from '@/components/icons/internal';
 import { Github } from '@/components/icons/simple-icons';
 import CloudinaryImg from '@/components/images/cloudinary-img';
 import { RootLayout } from '@/components/layouts/root-layout';
@@ -66,7 +66,7 @@ const ProjectsPage = ({ proj }: InferGetStaticPropsType<typeof getStaticProps>) 
           <p className="mt-2 text-sm text-text">{proj.description}</p>
           <div className="mt-2 flex flex-wrap items-center justify-start gap-3 text-sm font-medium text-text">
             <div className="flex items-center gap-1.5">
-              <UserRound size={18} />
+              <UserRound className="h-[18px] w-[18px]" />
               <p className="flex items-center justify-start gap-2 text-sm transition-colors duration-300">
                 {proj.category}
               </p>
@@ -78,7 +78,7 @@ const ProjectsPage = ({ proj }: InferGetStaticPropsType<typeof getStaticProps>) 
             </div>
             <span>-</span>
             <div className="inline-flex items-center gap-1.5">
-              <Link size={18} />
+              <Link className="h-[18px] w-[18px]" />
               <CustomLink href={proj.url!}>Open Live Site</CustomLink>
             </div>
             <div className="ml-auto flex flex-wrap gap-1">
