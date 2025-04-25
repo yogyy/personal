@@ -27,6 +27,31 @@
     color: hsl(var(--text) / 0.9);
   }
 
+  .background-pattern {
+    background:
+      url(/images/noise.png) repeat,
+      linear-gradient(
+        to bottom,
+        transparent,
+        hsl(var(--background) / 0.25),
+        hsl(var(--primary) / 0.4),
+        hsl(var(--primary) / 0.65),
+        hsl(var(--primary))
+      );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      hsl(var(--background) / 0.2),
+      hsl(var(--background) / 0.5),
+      hsl(var(--background))
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      hsl(var(--background) / 0.2),
+      hsl(var(--background) / 0.3),
+      hsl(var(--background) / 0.4)
+    );
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

@@ -3,7 +3,6 @@ import { GeistSans } from 'geist/font/sans';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import SEO from 'next-seo.config';
-import { GridPattern } from '@/components/grid-pattern';
 import { isProd } from '@/constants/env';
 import { Footer } from './footer';
 import { Navbar } from './navbar';
@@ -32,7 +31,7 @@ export const RootLayout = ({ children, title, desc }: SeoProps) => {
         defaultTitle={SEO.openGraph?.title}
       />
       <Navbar />
-      <GridPattern yOffset={-96} />
+      <div className="background-pattern fixed -z-10 h-svh w-svw" />
       <main id="skip-nav" className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
         {children}
       </main>
