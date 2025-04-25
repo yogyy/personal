@@ -2,21 +2,20 @@ import { NextSeoProps } from 'next-seo';
 
 const config: NextSeoProps = {
   openGraph: {
-    title: 'Yogyy - Frontend Developer',
+    title: 'Yogyy - Fullstack Web Developer',
     type: 'website',
-    description:
-      "I'm a full-stack web developer with React and Typescript expertise. I specialize in creating visually appealing, user-friendly websites, and responsive web applications.",
+    description: "I'm a full-stack web developer specializing in React and Typescript.",
     images: [
       {
         url: 'https://yogyy.vercel.app/images/og-image.jpg',
         width: 1200,
         height: 600,
-        alt: 'open graph image',
+        alt: 'Yogyy - Fullstack Web Developer',
         type: 'image/jpeg',
       },
     ],
-    siteName: 'yogyy const',
-    locale: 'en-US,id-ID',
+    siteName: 'Yogyy Portfolio',
+    locale: 'en-US',
   },
   additionalLinkTags: [
     {
