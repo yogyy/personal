@@ -1,14 +1,13 @@
 import { Fragment } from 'react';
 import {
   Drizzle,
-  Fastify,
-  Git,
-  Graphql,
   Javascript,
   Nextdotjs,
   Nodedotjs,
   Postgresql,
   React,
+  Shadcnui,
+  Sqlite,
   Tailwindcss,
   Typescript,
 } from '@/components/icons/simple-icons';
@@ -20,13 +19,12 @@ const techSkills = [
   'TypeScript',
   'Next.js',
   'Tailwind CSS',
+  'shadcn/ui',
   'Node.js',
-  'Fastify',
   'Hono',
   'Drizzle ORM',
   'PostgreSQL',
-  'Graphql',
-  'Git',
+  'SQLite',
 ];
 
 const ICON_TYPES = new Map(
@@ -37,12 +35,13 @@ const ICON_TYPES = new Map(
     react: <React className="group-hover:text-[#61DAFB]" />,
     nextjs: <Nextdotjs className="group-hover:text-[#000000]" />,
     tailwindcss: <Tailwindcss className="group-hover:text-[#06B6D4]" />,
-    fastify: <Fastify className="group-hover:text-[#000000]" />,
-    git: <Git className="group-hover:text-[#F05032]" />,
-    hono: <Hono className="group-hover:text-[#E36002]" />,
+    shadcnui: <Shadcnui className="group-hover:text-[#000000]" />,
+    hono: (
+      <Hono className="[&>path:nth-child(1)]:group-hover:fill-[url(#a)] [&>path:nth-child(2)]:group-hover:fill-[#F95]" />
+    ),
     postgresql: <Postgresql className="group-hover:text-[#4169E1]" />,
     drizzleorm: <Drizzle className="group-hover:text-[#C5F74F]" />,
-    graphql: <Graphql className="group-hover:text-[#E10098]" />,
+    sqlite: <Sqlite className="group-hover:text-[#003B57]" />,
   }),
 );
 
@@ -62,10 +61,10 @@ export const TechSection = (props: React.HTMLAttributes<HTMLDivElement>) => {
         {techSkills.map(item => (
           <li
             key={item}
-            className="group flex items-center rounded-md border bg-card p-2 transition-colors hover:bg-primary/30"
+            className="group flex items-center rounded-md border bg-card p-2 transition-colors hover:bg-text/10"
           >
             <span className="text-2xl text-inherit">
-              <Icon type={item.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '')} />
+              <Icon type={item.replace(/[ ./]/g, '')} />
             </span>
             <span className="pl-4">{item}</span>
           </li>
