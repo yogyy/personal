@@ -3,7 +3,7 @@ import { Github, LinkedIn, X } from '@/components/icons/simple-icons';
 
 const externalUrl = [
   {
-    href: 'https://drive.google.com/file/d/1WiDTa401eRn8icWj6QkV842Q4kxFiFwZ/view?usp=sharing',
+    href: 'https://drive.google.com/file/d/1MpKEc6HqGpyrRHbT_iI31bpUjCEPOs4u/view?usp=sharing',
     icon: FileUser,
     name: 'Resume',
   },
