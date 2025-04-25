@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { client } from '@/lib/feature-flags';
 import { getAccessToken } from '@/lib/get-access-token';
@@ -20,14 +19,21 @@ interface SpotifyData {
   currently_playing_type: string;
 }
 
-const getNowPlaying = async () => {
+const getNowPlaying = async (): Promise<SpotifyData | null> => {
   const access_token = await getAccessToken(env.SPOTIFY_REFRESH_TOKEN);
 
-  return axios.get<SpotifyData>('https://api.spotify.com/v1/me/player/currently-playing', {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
+  const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+    headers: { Authorization: `Bearer ${access_token}` },
   });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch currently playing track: ${res.status} ${res.statusText}`);
+  }
+  if (res.status === 204 || res.status > 400) {
+    return null;
+  }
+
+  return await res.json();
 };
 
 export default async function spotify(req: NextApiRequest, res: NextApiResponse) {
@@ -38,22 +44,17 @@ export default async function spotify(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const response = await getNowPlaying();
-
-    if (
-      response.status === 204 ||
-      response.status > 400 ||
-      response.data.currently_playing_type !== 'track'
-    ) {
+    if (response === null || response?.currently_playing_type !== 'track') {
       res.setHeader('Cache-Control', 'public, s-maxage=180, stale-while-revalidate=90');
       return res.status(200).json({ isPlaying: false });
     }
 
     const data = {
-      isPlaying: response.data.is_playing,
-      title: response.data.item.name,
-      album: response.data.item.album,
-      artist: response.data.item.album.artists.map(artist => artist.name).join(', '),
-      songUrl: response.data.item.external_urls.spotify,
+      isPlaying: response.is_playing,
+      title: response.item.name,
+      album: response.item.album,
+      artist: response.item.album.artists.map(artist => artist.name).join(', '),
+      songUrl: response.item.external_urls.spotify,
     };
 
     res.setHeader('Cache-Control', 'public, s-maxage=180, stale-while-revalidate=90');
