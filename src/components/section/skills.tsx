@@ -33,7 +33,7 @@ export const SkillSection = ({ className, inView, ...props }: SkillSectionProps)
           <m.div
             variants={{ hidden: { opacity: 0, y: -20 }, show: { opacity: 1, y: 0 } }}
             transition={{ easings: easeOutquad }}
-            className="relative flex h-max max-h-[260px] flex-1 flex-col justify-between gap-4 overflow-hidden rounded-md border bg-card p-4"
+            className="relative flex h-max max-h-[260px] flex-1 flex-col justify-between gap-4 overflow-hidden rounded-md border bg-card/40 p-4"
           >
             <div className="flex flex-row items-center gap-3">
               <CodeXml className="h-6 w-6 shrink-0 text-accent" />
@@ -47,7 +47,7 @@ export const SkillSection = ({ className, inView, ...props }: SkillSectionProps)
           <m.div
             variants={{ hidden: { opacity: 0, y: -20 }, show: { opacity: 1, y: 0 } }}
             transition={{ easings: easeOutquad }}
-            className="flex max-h-[260px] flex-1 flex-col gap-4 overflow-hidden rounded-md border bg-card p-4"
+            className="flex max-h-[260px] flex-1 flex-col gap-4 overflow-hidden rounded-md border bg-card/40 p-4"
           >
             <div className="flex flex-row flex-nowrap items-center gap-3">
               <Terminal className="h-6 w-6 shrink-0 text-accent" />
@@ -63,7 +63,7 @@ export const SkillSection = ({ className, inView, ...props }: SkillSectionProps)
                   <TooltipTrigger className="mx-1 underline decoration-accent decoration-2">
                     technologies
                   </TooltipTrigger>
-                  <TooltipContent sideOffset={8}>
+                  <TooltipContent sideOffset={8} className="bg-card/90">
                     <p className="px-1 text-xs text-text">
                       Yes, they are
                       <br /> Google, <br /> StackOverflow <br /> and ChatGPT!

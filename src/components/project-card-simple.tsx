@@ -7,7 +7,7 @@ const ProjectCardSimple = ({ project }: { project: SimpleProject }) => {
   const { title, description, github, url, type } = project;
 
   return (
-    <li className="group relative flex h-fit w-full select-none break-inside-avoid-column flex-col gap-3 rounded-md border bg-card p-3.5 transition-[border-color] duration-300 ease-linear focus-within:border-accent/50 hover:border hover:border-accent/50 md:gap-6">
+    <li className="group relative flex h-fit w-full select-none break-inside-avoid-column flex-col gap-3 rounded-md border bg-card/40 p-3.5 transition-[border-color] duration-300 ease-linear focus-within:border-accent/50 hover:border hover:border-accent/50 md:gap-6">
       <div className="flex justify-between">
         <h3 className="text-xl font-bold text-text/70 transition-colors duration-300 group-focus-within:text-accent group-hover:text-accent">
           {title}

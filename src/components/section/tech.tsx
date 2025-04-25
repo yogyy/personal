@@ -61,7 +61,7 @@ export const TechSection = (props: React.HTMLAttributes<HTMLDivElement>) => {
         {techSkills.map(item => (
           <li
             key={item}
-            className="group flex items-center rounded-md border bg-card p-2 transition-colors hover:bg-text/10"
+            className="group flex items-center rounded-md border bg-card/40 p-2 transition-colors hover:bg-text/10"
           >
             <span className="text-2xl text-inherit">
               <Icon type={item.replace(/[ ./]/g, '')} />
