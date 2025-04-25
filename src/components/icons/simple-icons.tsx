@@ -112,8 +112,8 @@ export function Hono(props: IconBaseProps) {
       <path fill="background" d="M39 21c47 51 14 66 0 66-11 0-51-11 0-66Z" />
       <defs>
         <linearGradient id="a" x2="0%" y2="100%">
-          <stop stop-color="#F84" />
-          <stop offset="100%" stop-color="#F30" />
+          <stop stopColor="#F84" />
+          <stop offset="100%" stopColor="#F30" />
         </linearGradient>
       </defs>
     </svg>
