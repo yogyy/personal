@@ -34,8 +34,8 @@
         to bottom,
         transparent,
         hsl(var(--background) / 0.25),
-        hsl(var(--primary) / 0.4),
-        hsl(var(--primary) / 0.65),
+        hsl(var(--primary) / 0.3),
+        hsl(var(--primary) / 0.45),
         hsl(var(--primary))
       );
     -webkit-mask-image: linear-gradient(
@@ -46,9 +46,9 @@
     );
     mask-image: linear-gradient(
       to bottom,
+      hsl(var(--background) / 0.1),
       hsl(var(--background) / 0.2),
-      hsl(var(--background) / 0.3),
-      hsl(var(--background) / 0.4)
+      hsl(var(--background) / 0.3)
     );
   }
 
