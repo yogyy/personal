@@ -5,7 +5,7 @@ import { DocsPageHeader } from '@/components/mdx/page-header';
 import { ProjectCard } from '@/components/project-card';
 import { ProjectCardSimple } from '@/components/project-card-simple';
 import { easeInoutQuad } from '@/constants/framer-easing';
-import { smallProjects } from '@/constants/simple-project';
+import { expirementalProjects, slicingProjects, smallProjects } from '@/constants/simple-project';
 
 const Projects = () => {
   return (
@@ -36,6 +36,18 @@ const Projects = () => {
                 <ProjectCardSimple key={procj.title} project={procj} />
               ))}
             </m.ul>
+            <h4 className="mt-6 text-primary">Slicing Projects</h4>
+            <ul className="mt-6 space-y-4 sm:columns-2 lg:columns-3">
+              {slicingProjects.map(project => (
+                <ProjectCardSimple key={project.title} project={project} />
+              ))}
+            </ul>
+            <h4 className="mt-6 text-primary">Experiment Project</h4>
+            <ul className="mt-6 space-y-4 sm:columns-2 lg:columns-3">
+              {expirementalProjects.map(project => (
+                <ProjectCardSimple key={project.title} project={project} />
+              ))}
+            </ul>
           </div>
         </article>
       </m.section>

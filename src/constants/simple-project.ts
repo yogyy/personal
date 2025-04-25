@@ -1,4 +1,4 @@
-interface ProjectCardSimple {
+export interface ProjectCardSimple {
   title: string;
   description: string;
   github?: string | undefined;
@@ -6,20 +6,24 @@ interface ProjectCardSimple {
   type: string[];
 }
 
-const smallProjects: ProjectCardSimple[] = [
+export const slicingProjects = [
   {
-    title: 'yogyy',
-    description: 'The website you are currently on',
-    url: 'https://yogyy.vercel.app',
-    type: ['React', 'Typescript', 'Next JS', 'Tailwind CSS', 'Radix UI'],
+    title: 'The Malaka',
+    description: 'landing page for a book product.',
+    github: 'https://github.com/yogyy/the-malaka',
+    url: 'https://yogyy.github.io/the-malaka',
+    type: ['React', 'Typescript', 'Tailwind CSS', 'Slicing'],
   },
   {
-    title: 'porto-cmd',
-    description: 'A Terminal based portfolio website',
-    github: 'https://github.com/yogyy/porto-cmd',
-    url: 'https://yogyy-cmd.pages.dev/',
-    type: ['Svelte', 'TypeScript'],
+    title: 'DressLy',
+    description: 'landing page for fashion shop',
+    github: 'https://github.com/yogyy/DressLy',
+    url: 'https://yogyy.github.io/DressLy/',
+    type: ['Vue', 'TypeScript', 'Tailwind CSS'],
   },
+];
+
+export const expirementalProjects: ProjectCardSimple[] = [
   {
     title: 'Fullstack Graphql',
     description: 'Fullstack app using graphql',
@@ -31,46 +35,6 @@ const smallProjects: ProjectCardSimple[] = [
     description: 'hono with lucia auth template',
     github: 'https://github.com/yogyy/hono-htmx-lucia',
     type: ['Hono', 'Lucia', 'Drizzle-Orm', 'Template'],
-  },
-  {
-    title: 'Gallery',
-    description: 'Searching Images using Unsplash API',
-    github: 'https://github.com/yogyy/Gallery',
-    type: ['React', 'Typescript', 'Next JS', 'Tailwind CSS'],
-  },
-  {
-    title: 'Indonesia Geography',
-    description: 'Showing Indonesia Geography and Searching Regency,Discrict, also Village',
-    github: 'https://github.com/yogyy/Indonesia-Geography',
-    type: ['React', 'Typescript', 'Next JS', 'Tailwind CSS'],
-  },
-  {
-    title: 'The Malaka',
-    description: 'landing page for a book product.',
-    github: 'https://github.com/yogyy/the-malaka',
-    url: 'https://yogyy.github.io/the-malaka',
-    type: ['React', 'Typescript', 'Tailwind CSS', 'Slicing'],
-  },
-  {
-    title: 'Gh/Searcher',
-    description: "searching user & user's repo",
-    github: 'https://github.com/yogyy/ghsearcher',
-    url: 'https://yogyy.github.io/ghsearcher',
-    type: ['React', 'TypeScript', 'Tailwind CSS', 'Radix UI'],
-  },
-  {
-    title: 'DressLy',
-    description: 'landing page for fashion shop',
-    github: 'https://github.com/yogyy/DressLy',
-    url: 'https://yogyy.github.io/DressLy/',
-    type: ['Vue', 'TypeScript', 'Tailwind CSS'],
-  },
-  {
-    title: 'ToDo App',
-    description: 'Drag Drop To Do',
-    github: 'https://github.com/yogyy/react-todo-drag-and-drop',
-    url: 'https://yogyy.github.io/react-todo-drag-and-drop/',
-    type: ['React', 'TypeScript', 'Tailwind CSS'],
   },
   {
     title: 'Moretti Store',
@@ -99,11 +63,60 @@ const smallProjects: ProjectCardSimple[] = [
     type: ['bun', 'PostgreSQL', ' Elysia', 'Kysely'],
   },
   {
-    title: 'Spotify Activity',
-    description: 'Spotify Activity Card like in the footer',
-    url: '/spotify',
-    type: ['SWR'],
+    title: 'Nuxt Oauth',
+    description: 'Nuxt 3 with Oauth2 with arctic',
+    github: 'https://github.com/yogyy/nuxt-oauth',
+    type: ['Nuxt 3', 'Vue', 'TypeScript', 'Tailwind CSS', 'Arctic', '@oslojs', 'D1 SQLite'],
+    url: 'https://nuxt-auth.pages.dev',
   },
 ];
 
-export { type ProjectCardSimple, smallProjects };
+export const smallProjects: ProjectCardSimple[] = [
+  {
+    title: 'yogyy',
+    description: 'The website you are currently on',
+    url: 'https://yogyy.vercel.app',
+    type: ['React', 'Typescript', 'Next JS', 'Tailwind CSS', 'Radix UI'],
+  },
+  {
+    title: 'Linktree',
+    description: 'A simple linktree clone',
+    github: 'https://github.com/yogyy/linktree',
+    url: 'https://yogyy.github.io/linktree',
+    type: ['Vue', 'Vite', 'Tailwind CSS'],
+  },
+  {
+    title: 'porto-cmd',
+    description: 'A Terminal based portfolio website',
+    github: 'https://github.com/yogyy/porto-cmd',
+    url: 'https://yogyy-cmd.pages.dev/',
+    type: ['Svelte', 'TypeScript'],
+  },
+  {
+    title: 'hono-api-starter',
+    description:
+      'Hono with TypeScript starter template for building a API with a PostgreSQL database backend.',
+    github: 'https://github.com/yogyy/hono-api-starter',
+    type: ['Hono', 'Typescript', 'Drizzle', 'wrangler'],
+  },
+  {
+    title: 'Indonesia Geography',
+    description: 'Showing Indonesia Geography and Searching Regency,Discrict, also Village',
+    github: 'https://github.com/yogyy/Indonesia-Geography',
+    type: ['React', 'Typescript', 'Next JS', 'Tailwind CSS'],
+  },
+  {
+    title: 'Gh/Searcher',
+    description: "searching user & user's repo",
+    github: 'https://github.com/yogyy/ghsearcher',
+    url: 'https://yogyy.github.io/ghsearcher',
+    type: ['React', 'TypeScript', 'Tailwind CSS', 'Radix UI'],
+  },
+  {
+    title: 'DnD Todo',
+    description: 'Drag Drop To Do',
+    github: 'https://github.com/yogyy/react-todo-drag-and-drop',
+    url: 'https://yogyy.github.io/react-todo-drag-and-drop/',
+    type: ['React', 'TypeScript', 'Tailwind CSS'],
+  },
+];
