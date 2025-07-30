@@ -23,11 +23,11 @@ export default function Home() {
           <Reveal ref={ref} inView={inView}>
             <article>
               <div>
-                <h1 className="mt-14 text-accent">Tech Stack</h1>
+                <h1 className="mt-14 text-primary">Tech Stack</h1>
                 <p className="mt-2">
                   Here are the technologies I use regularly to build a projects:
                 </p>
-                <TechSection className="mt-6 text-text/75" />
+                <TechSection className="mt-6 text-foreground/75" />
               </div>
             </article>
           </Reveal>
@@ -37,7 +37,7 @@ export default function Home() {
         {({ ref, inView }) => (
           <Reveal ref={ref} inView={inView}>
             <article>
-              <h1 className="text-accent">Features Project</h1>
+              <h1 className="text-primary">Features Project</h1>
               <p className="mt-2">Showcasing my expertise in frontend and fullstack development.</p>
               <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {allProjects.map(project => (

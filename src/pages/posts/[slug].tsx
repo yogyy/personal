@@ -49,17 +49,17 @@ export const PostsPage = ({ post }: InferGetStaticPropsType<typeof getStaticProp
               onClick={() => back()}
               className="animated-underline group flex items-center gap-3 font-semibold focus:outline-none"
             >
-              <ArrowLeft className="h-5 w-5 group-focus-within:text-accent group-hover:text-accent" />{' '}
+              <ArrowLeft className="h-5 w-5 group-focus-within:text-primary group-hover:text-primary" />{' '}
               Go Back
             </button>
-            <blockquote className="[&>*]:text-muted-foreground mt-6 border-l-2 pl-6 italic">
+            <blockquote className="mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground">
               <p>{post.date}</p>
             </blockquote>
             <DocsPageHeader heading={post.title} text={post.description} hr />
           </div>
         </div>
         <div className="layout py-6 lg:grid lg:grid-cols-[auto,250px] lg:gap-8">
-          <article className="h-full w-full min-w-0 max-w-3xl prose-h2:text-2xl prose-h2:text-accent prose-a:text-accent">
+          <article className="h-full w-full min-w-0 max-w-3xl prose-h2:text-2xl prose-h2:text-primary prose-a:text-primary">
             <Mdx code={post.body.code} />
           </article>
           <aside className="hidden h-full text-sm lg:block">

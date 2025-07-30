@@ -23,13 +23,13 @@ export default function Page() {
             <li key={post._id}>
               <Link
                 href={post.slug}
-                className="group relative grid justify-start gap-2 rounded-sm text-text/80 outline-none transition-colors duration-200 focus-within:text-accent/50 hover:text-accent/50"
+                className="group relative grid justify-start gap-2 rounded-sm text-foreground/80 outline-none transition-colors duration-200 focus-within:text-primary/80 hover:text-primary/50"
               >
                 <div className="relative w-full">
                   <h1 className="text-lg md:text-[1.25em]">{post.title}</h1>
-                  <p className="text-text/70">{post.description}</p>
+                  <p className="text-foreground/70">{post.description}</p>
                 </div>
-                <p className="text-xs text-text/40">{post.date}</p>
+                <p className="text-xs text-foreground/40">{post.date}</p>
               </Link>
             </li>
           ))}

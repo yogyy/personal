@@ -86,7 +86,7 @@ export function SpotifyActivity({
             {data.isPlaying ? 'Now Playing' : 'Last Played'}:{' '}
             {data.isPlaying ? data.title : lastPlay?.title}
           </p>
-          <p className="pr-4 text-xs font-semibold text-text/60">
+          <p className="text-foreground/60 pr-4 text-xs font-semibold">
             by {data.isPlaying ? data.artist : lastPlay?.artist}
           </p>
         </div>

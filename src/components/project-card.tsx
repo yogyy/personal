@@ -6,20 +6,20 @@ import CloudinaryImg from './images/cloudinary-img';
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <li className="project-card group w-full overflow-hidden rounded-md border bg-card/40 transition-[border-color] duration-200 ease-in focus-within:border-accent/50 hover:border-accent/50">
+    <li className="project-card group w-full overflow-hidden rounded-md border bg-card transition-[border-color] duration-200 ease-in focus-within:border-primary/50 hover:border-primary/50">
       <Link
         href={project.slug}
         className="projectcard flex h-full w-full flex-col items-start rounded-md p-4 focus:outline-none"
       >
         <div className="mb-1 flex w-full flex-wrap sm:mb-0">
-          <h1 className="mr-auto text-xl text-text/80 transition-colors duration-300 group-focus-within:text-accent group-hover:text-accent">
+          <h1 className="mr-auto text-xl text-foreground/80 transition-colors duration-300 group-focus-within:text-primary group-hover:text-primary">
             {project.title}
           </h1>
-          <div className="flex items-center gap-2 text-text">
+          <div className="flex items-center gap-2 text-foreground">
             {project.techs?.split(', ').map(tech => <Icon key={tech} icon={tech} />)}
           </div>
         </div>
-        <p className="mb-auto text-sm text-text/50">{project.description}</p>
+        <p className="mb-auto text-sm text-foreground/50">{project.description}</p>
         <CloudinaryImg
           publicId={project.banner!}
           alt={project.title}
@@ -28,9 +28,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           preview={false}
           className="pointer-events-none relative mt-3 w-full items-center bg-background/30"
         />
-        <p className="animated-underline mt-2 flex items-center gap-1 place-self-end font-medium text-text">
+        <p className="animated-underline mt-2 flex items-center gap-1 place-self-end font-medium text-foreground">
           See more
-          <ArrowRight className="h-[18px] w-[18px] transition-colors group-focus-within:text-accent group-hover:text-accent" />
+          <ArrowRight className="h-[18px] w-[18px] transition-colors group-focus-within:text-primary group-hover:text-primary" />
         </p>
       </Link>
     </li>

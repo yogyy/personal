@@ -32,7 +32,7 @@ export function DocsPageHeader({
             initial={{ opacity: 0, x: -text.length }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ easings: easeInoutQuad, duration: 0.4, delay: 0.1 }}
-            className="text-xl text-text/70"
+            className="text-foreground/70 text-xl"
           >
             {text}
           </m.p>

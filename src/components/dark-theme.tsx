@@ -15,7 +15,7 @@ export function ThemeButton(props: ThemeButtonProps) {
       type="button"
       aria-label="dark mode toggle"
       aria-pressed="true"
-      className="rounded-md border-2 border-transparent p-1.5 py-1 text-accent focus:outline-none focus-visible:border-accent "
+      className="rounded-md border-2 border-transparent p-1.5 py-1 text-primary focus:outline-none focus-visible:border-accent "
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       {...props}
     >

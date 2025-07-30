@@ -5,7 +5,7 @@ export const Accent = ({ children, className, ...props }: React.ComponentPropsWi
     <span
       className={cn(
         'bg-gradient-to-r bg-clip-text text-transparent transition-colors',
-        'from-primary to-accent',
+        'from-primary to-primary/80',
         className,
       )}
       {...props}

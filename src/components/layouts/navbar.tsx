@@ -18,8 +18,8 @@ function NavLink({ href, children, ...rest }: React.AnchorHTMLAttributes<HTMLAnc
     <Link
       href={href || ''}
       className={clsx(
-        'rounded-sm py-1 text-accent transition-colors focus:outline-none focus-visible:ring focus-visible:ring-accent',
-        { 'text-text hover:text-primary': isNotActive },
+        'rounded-sm p-1 text-primary transition-colors focus:outline-none focus-visible:ring focus-visible:ring-primary',
+        { 'text-white/50 hover:text-primary/50': isNotActive },
       )}
       {...rest}
     >
@@ -54,7 +54,7 @@ export const Navbar = () => {
     >
       <a
         href="#skip-nav"
-        className="group absolute left-4 top-1 z-20 -translate-y-16 rounded-sm bg-background p-2 font-medium text-text transition focus:translate-y-0 focus:outline-none focus:ring focus:ring-accent"
+        className="group absolute left-4 top-1 z-20 -translate-y-16 rounded-sm bg-background p-2 font-medium text-foreground transition focus:translate-y-0 focus:outline-none focus:ring focus:ring-accent"
       >
         skip to content
       </a>
@@ -63,7 +63,7 @@ export const Navbar = () => {
         className={clsx('backdrop-blur-sm', { 'bg-background': inPosts })}
       >
         <div className="layout flex items-center justify-between py-4">
-          <ul className="ml-9 flex gap-9 font-semibold">
+          <ul className="ml-9 flex gap-7 font-medium">
             {navLinks.map(({ label, href }) => (
               <li key={`${href} ${label}`} className="text-xs md:text-base">
                 <NavLink href={href}>{label}</NavLink>
