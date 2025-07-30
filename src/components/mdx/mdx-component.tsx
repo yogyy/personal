@@ -76,7 +76,7 @@ const components = {
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className={cn('even:bg-muted m-0 border-t p-0', className)} {...props} />
+    <tr className={cn('m-0 border-t p-0 even:bg-muted', className)} {...props} />
   ),
   th: ({ className, ...props }: React.HtmlHTMLAttributes<HTMLTableCellElement>) => (
     <th
@@ -108,7 +108,7 @@ const components = {
   code: ({ className, ...props }: React.HtmlHTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        'relative rounded bg-accent/10 px-[0.3rem] py-[0.2rem] font-mono text-sm text-accent',
+        'relative rounded bg-primary/10 px-[0.3rem] py-[0.2rem] font-mono text-sm text-primary',
         className,
       )}
       {...props}
