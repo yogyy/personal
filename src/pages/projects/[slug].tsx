@@ -62,9 +62,9 @@ const ProjectsPage = ({ proj }: InferGetStaticPropsType<typeof getStaticProps>) 
           animate={{ opacity: 1 }}
           transition={{ easings: easeInoutQuad, duration: 0.6, delay: 0.1 }}
         >
-          <h1 className="mt-4 text-accent/90">{proj.title}</h1>
-          <p className="mt-2 text-sm text-text">{proj.description}</p>
-          <div className="mt-2 flex flex-wrap items-center justify-start gap-3 text-sm font-medium text-text">
+          <h1 className="mt-4 text-primary/90">{proj.title}</h1>
+          <p className="mt-2 text-sm text-foreground">{proj.description}</p>
+          <div className="mt-2 flex flex-wrap items-center justify-start gap-3 text-sm font-medium text-foreground">
             <div className="flex items-center gap-1.5">
               <UserRound className="h-[18px] w-[18px]" />
               <p className="flex items-center justify-start gap-2 text-sm transition-colors duration-300">
@@ -94,7 +94,7 @@ const ProjectsPage = ({ proj }: InferGetStaticPropsType<typeof getStaticProps>) 
           </div>
           <hr className="mt-1 border" />
           <div className="py-6 lg:grid lg:grid-cols-[auto,250px] lg:gap-8">
-            <article className="h-full w-full min-w-0 max-w-5xl marker:text-primary prose-headings:text-accent/90 prose-h2:text-2xl">
+            <article className="h-full w-full min-w-0 max-w-5xl marker:text-primary prose-headings:text-primary/90 prose-h2:text-2xl">
               <Mdx code={proj.body.code} />
               <div className="hidden h-60 bg-transparent lg:block" />
             </article>

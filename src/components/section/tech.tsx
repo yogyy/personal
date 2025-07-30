@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import {
   Drizzle,
+  Hono,
   Javascript,
   Nextdotjs,
   Nodedotjs,
@@ -8,40 +9,42 @@ import {
   React,
   Shadcnui,
   Sqlite,
+  Svelte,
   Tailwindcss,
   Typescript,
 } from '@/components/icons/simple-icons';
-import { Hono } from '../icons/simple-icons';
 
 const techSkills = [
-  'JavaScript',
-  'React',
-  'TypeScript',
-  'Next.js',
-  'Tailwind CSS',
-  'shadcn/ui',
-  'Node.js',
-  'Hono',
-  'Drizzle ORM',
-  'PostgreSQL',
-  'SQLite',
+  { name: 'JavaScript', new: false },
+  { name: 'React', new: false },
+  { name: 'TypeScript', new: false },
+  { name: 'Next.js', new: false },
+  { name: 'Tailwind CSS', new: false },
+  { name: 'shadcn/ui', new: false },
+  { name: 'Node.js', new: false },
+  { name: 'Hono', new: false },
+  { name: 'Drizzle ORM', new: false },
+  { name: 'PostgreSQL', new: false },
+  { name: 'SQLite', new: false },
+  { name: 'Svelte', new: true },
 ];
 
 const ICON_TYPES = new Map(
   Object.entries({
-    javascript: <Javascript className="group-hover:text-[#F7DF1E]" />,
-    typescript: <Typescript className="group-hover:text-[#3178C6]" />,
-    nodejs: <Nodedotjs className="group-hover:text-[#339933]" />,
-    react: <React className="group-hover:text-[#61DAFB]" />,
-    nextjs: <Nextdotjs className="group-hover:text-[#000000]" />,
-    tailwindcss: <Tailwindcss className="group-hover:text-[#06B6D4]" />,
-    shadcnui: <Shadcnui className="group-hover:text-[#000000]" />,
+    javascript: <Javascript className="transition-[color] group-hover:text-[#F7DF1E]" />,
+    typescript: <Typescript className="transition-[color] group-hover:text-[#3178C6]" />,
+    nodejs: <Nodedotjs className="transition-[color] group-hover:text-[#339933]" />,
+    react: <React className="transition-[color] group-hover:text-[#61DAFB]" />,
+    nextjs: <Nextdotjs className="transition-[color] group-hover:text-[#000000]" />,
+    tailwindcss: <Tailwindcss className="transition-[color] group-hover:text-[#06B6D4]" />,
+    shadcnui: <Shadcnui className="transition-[color] group-hover:text-[#000000]" />,
     hono: (
-      <Hono className="[&>path:nth-child(1)]:group-hover:fill-[url(#a)] [&>path:nth-child(2)]:group-hover:fill-[#F95]" />
+      <Hono className="transition-[color] [&>path:nth-child(1)]:group-hover:fill-[url(#a)] [&>path:nth-child(2)]:group-hover:fill-[#F95]" />
     ),
-    postgresql: <Postgresql className="group-hover:text-[#4169E1]" />,
-    drizzleorm: <Drizzle className="group-hover:text-[#C5F74F]" />,
-    sqlite: <Sqlite className="group-hover:text-[#003B57]" />,
+    postgresql: <Postgresql className="transition-[color] group-hover:text-[#4169E1]" />,
+    drizzleorm: <Drizzle className="transition-[color] group-hover:text-[#C5F74F]" />,
+    sqlite: <Sqlite className="transition-[color] group-hover:text-[#003B57]" />,
+    svelte: <Svelte className="transition-[color] group-hover:text-[#ff3e00]" />,
   }),
 );
 
@@ -60,13 +63,18 @@ export const TechSection = (props: React.HTMLAttributes<HTMLDivElement>) => {
       <ul className="grid cursor-default grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-6">
         {techSkills.map(item => (
           <li
-            key={item}
-            className="group flex items-center rounded-md border bg-card/40 p-2 transition-colors hover:bg-text/10"
+            key={item.name}
+            className="group relative flex items-center rounded-md border bg-card p-2 transition-colors hover:bg-secondary/50"
           >
+            {item.new && (
+              <span className="absolute -right-1 -top-1 rotate-12 animate-pulse text-xs text-primary">
+                new
+              </span>
+            )}
             <span className="text-2xl text-inherit">
-              <Icon type={item.replace(/[ ./]/g, '')} />
+              <Icon type={item.name.replace(/[ ./]/g, '')} />
             </span>
-            <span className="pl-4">{item}</span>
+            <span className="pl-4">{item.name}</span>
           </li>
         ))}
       </ul>

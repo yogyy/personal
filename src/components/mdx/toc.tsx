@@ -94,8 +94,8 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
               className={cn(
                 'inline-block border-l-2 border-transparent pl-2 no-underline',
                 item.url === `#${activeItem}`
-                  ? 'border-accent font-medium text-accent'
-                  : 'text-text/70',
+                  ? 'border-primary font-medium text-primary/80'
+                  : 'text-foreground/70',
               )}
             >
               {item.title}

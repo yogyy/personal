@@ -34,7 +34,7 @@ export default function TechMdx({ techs }: TechIconsProps) {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href={current.link} className="group outline-none" target="_blank">
-                    <current.icon className="h-6 w-6 transition-colors duration-200 group-hover:text-accent group-focus:text-accent" />
+                    <current.icon className="h-6 w-6 transition-colors duration-200 group-hover:text-primary group-focus:text-primary" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent sideOffset={8} className="duration-300">

@@ -31,7 +31,6 @@ export const RootLayout = ({ children, title, desc }: SeoProps) => {
         defaultTitle={SEO.openGraph?.title}
       />
       <Navbar />
-      <div className="background-pattern fixed -z-10 h-svh w-svw" />
       <main id="skip-nav" className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
         {children}
       </main>

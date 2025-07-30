@@ -25,17 +25,17 @@ export const Footer = () => {
       animate={inView && 'show'}
       className={`mt-6 bg-background/30 backdrop-blur-sm ${GeistSans.variable} font-sans`}
     >
-      <hr className="layout mb-6 border-text/10" />
+      <hr className="layout mb-6 border-foreground/10" />
       <div className="layout relative pb-4">
         <div className="mb-4 flex flex-col items-center justify-center gap-3">
           {spotifyFlag && <SpotifyActivity />}
         </div>
         <div className="flex flex-col-reverse place-items-center justify-center gap-6">
-          <p className="flex gap-3 text-sm font-medium text-text/60 sm:text-center">
+          <p className="flex gap-3 text-sm font-medium text-foreground/60 sm:text-center">
             © 2025 yogyy.
           </p>
           <div className="flex flex-col items-center">
-            <p className="text-text/60">Reach me out</p>
+            <p className="text-foreground/60">Reach me out</p>
             <ul className="relative my-auto flex gap-x-3 pt-2 text-xl md:gap-x-5">
               {footerLinks.map(link => (
                 <li key={link.href} className="inline-flex items-center">
@@ -53,14 +53,14 @@ export const Footer = () => {
                           aria-label={`go to ${link.alt}`}
                           className="cursor-newtab"
                         >
-                          <link.icon className="relative m-1 w-5 text-text/70 group-hover:text-accent group-focus:text-accent" />
+                          <link.icon className="relative m-1 w-5 text-foreground/70 group-hover:text-primary group-focus:text-primary" />
                         </Link>
                       </TooltipTrigger>
                       <TooltipPortal>
                         <TooltipContent
                           sideOffset={8}
                           side="top"
-                          className="font-medium text-text/80 outline-accent duration-400"
+                          className="font-medium text-foreground/80 outline-primary duration-400"
                         >
                           {link.content[0]}
                           <span className="text-primary">{link.content[1]}</span>
