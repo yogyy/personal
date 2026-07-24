@@ -3,5 +3,6 @@
     "deploymentEnabled": {
       "main": true
     }
-  }
+  },
+  "framework": "tanstack-start"
 }
