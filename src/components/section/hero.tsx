@@ -1,99 +1,124 @@
-import { AnimatePresence, m } from 'framer-motion';
-import Link from 'next/link';
-import { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Accent } from '@/components/accent';
-import UnstyledLink from '@/components/links/unstyledlink';
-import { easeOutBack } from '@/constants/framer-easing';
-import { externalUrl } from '@/constants/links';
-import { ShineBorder } from '../shine-border';
+import { motion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
+import { socialItems } from '#/lib/constant'
+import { useMouseInside } from '#/lib/hooks/use-mouse-inside'
+import { fadeUp, REVEAL_EASE } from '#/lib/motion'
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 
-export const HeroSection = () => {
-  const [showLinks, setShowLinks] = useState(false);
+export default function HeroSection() {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const mouse = useMouseInside(rootRef)
+
+  const [size, setSize] = useState({ w: 800, h: 600 })
+  useEffect(() => {
+    if (!rootRef.current) return
+    const ro = new ResizeObserver(() => {
+      if (rootRef.current) {
+        setSize({
+          w: rootRef.current.clientWidth,
+          h: rootRef.current.clientHeight,
+        })
+      }
+    })
+    ro.observe(rootRef.current)
+    return () => ro.disconnect()
+  }, [])
+
+  const mx = mouse.inside ? mouse.x / size.w - 0.5 : 0
+  const my = mouse.inside ? mouse.y / size.h - 0.5 : 0
 
   return (
-    <section className="min-h-main layout relative mb-20 flex flex-col justify-center">
-      <m.article
-        initial={{ y: 0, opacity: 0 }}
-        animate={{ y: -40, opacity: 1 }}
-        transition={{ easings: easeOutBack, duration: 0.4 }}
+    <section
+      ref={rootRef}
+      className="relative mx-auto -mt-14 flex min-h-dvh max-w-7xl flex-col justify-center px-6 md:px-12"
+    >
+      <motion.div
+        {...fadeUp}
+        className="mb-9 flex items-center gap-4 font-mono text-foreground/70 text-xs uppercase tracking-[0.08em]"
       >
-        <h2 className="text-foreground items-end justify-center">Hi !</h2>
-        <h1 className="text-foreground items-end justify-center text-3xl md:text-4xl 2xl:text-5xl">
-          You Can call me<Accent title="or YOGI">&nbsp;YOGYY</Accent>
-        </h1>
-        <p className="mt-4 max-w-4xl text-wrap md:mt-6 md:text-lg 2xl:text-xl">
-          I&apos;m a passionate frontend engineer diving into fullstack development <br />
-          with creativity and dedication.
-        </p>
-        <m.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ easings: easeOutBack, duration: 0.4, delay: 0.2 }}
-          className="mt-8 flex flex-wrap items-center gap-4 md:text-lg"
-        >
-          <div className="group relative">
-            <Link href="/projects" className="group/link focus-visible:outline-none">
-              <m.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3, ease: 'easeIn' }}
-                className="text-foreground rounded-sm px-3 py-2 font-medium transition-colors group-hover/link:bg-primary/20 group-focus-visible/link:bg-primary/20"
+        <span className="whitespace-nowrap rounded-full border border-chart-1 bg-[color-mix(in_oklab,var(--color-chart-1)_8%,transparent)] px-2.5 py-1 text-chart-1">
+          Available
+        </span>
+        <Tooltip>
+          <TooltipTrigger>Indonesia · UTC+7</TooltipTrigger>
+          <TooltipContent side="right" align="center" sideOffset={10}>
+            <p className="font-mono">Tangerang Regency</p>
+          </TooltipContent>
+        </Tooltip>
+      </motion.div>
+
+      <GlitchHero mx={mx} my={my} />
+
+      <motion.p
+        {...fadeUp}
+        transition={{ ...fadeUp.transition, delay: 0.15 }}
+        className="mt-10 max-w-3xl text-foreground/80 leading-[1.6] sm:text-lg"
+      >
+        I enjoy building fast, reliable web applications with TypeScript and
+        modern web technologies.
+      </motion.p>
+
+      <motion.div
+        {...fadeUp}
+        transition={{ ...fadeUp.transition, delay: 0.3 }}
+        className="mt-6 flex flex-wrap items-center gap-4 font-mono text-foreground/60 text-xs lowercase tracking-[0.06em]"
+      >
+        {socialItems.map((social, index) => {
+          const Icon = social.icon
+
+          return (
+            <span
+              key={social.href}
+              className="inline-flex items-center md:gap-4"
+            >
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                title={social.label}
+                aria-label={social.label}
+                className="inline-flex items-center gap-2 rounded-md p-2 text-foreground/70 no-underline transition-colors hover:bg-[color-mix(in_oklab,var(--color-chart)_10%,transparent)] hover:text-chart-1 max-md:bg-surface md:rounded-none md:p-0 md:hover:bg-transparent"
               >
-                <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} borderWidth={2} />
-                View Projects
-              </m.div>
-            </Link>
-          </div>
-          <AnimatePresence mode="popLayout">
-            {!showLinks ? (
-              <m.button
-                layout
-                className="text-secondary-foreground relative z-0 flex items-center justify-center px-3 py-2 font-semibold"
-                onClick={() => setShowLinks(prev => !prev)}
-                initial={{ opacity: 0, x: -40 }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 0.4, easings: easeOutBack, delay: 0.6 },
-                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                }}
-                whileTap={{ rotate: '-2.5deg', opacity: 0.2 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3, ease: 'easeIn' }}
-                type="button"
-              >
-                Get in Touch
-              </m.button>
-            ) : (
-              <m.ul
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.15, easings: easeOutBack }}
-                className="flex flex-wrap items-center gap-2"
-              >
-                {externalUrl.map(url => (
-                  <li
-                    key={url.name}
-                    className="flex justify-center rounded-md border-2 border-transparent transition duration-300 ease-out focus-within:border-accent"
-                  >
-                    <UnstyledLink
-                      className={cn(
-                        'text-foreground/50 group inline-flex items-center gap-1 text-sm font-medium transition-colors',
-                        'focus-within:text-primary hover:text-primary focus:rounded-md focus:outline-none md:text-base',
-                      )}
-                      href={url.href}
-                    >
-                      <url.icon className="h-5 w-5" />
-                      <span>{url.name}</span>
-                    </UnstyledLink>
-                  </li>
-                ))}
-              </m.ul>
-            )}
-          </AnimatePresence>
-        </m.div>
-        <div></div>
-      </m.article>
+                <Icon className="inline-flex size-4.5 md:size-3.5" />
+                <span className="hidden font-light md:inline">
+                  {social.text}
+                </span>
+              </a>
+              {index < socialItems.length - 1 && (
+                <span aria-hidden className="hidden md:inline">
+                  ·
+                </span>
+              )}
+            </span>
+          )
+        })}
+      </motion.div>
     </section>
-  );
-};
+  )
+}
+
+function GlitchHero({ mx, my }: { mx: number; my: number }) {
+  return (
+    <motion.h1
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: REVEAL_EASE, delay: 0.05 }}
+      className="relative m-0 font-medium text-[clamp(64px,9vw,140px)] text-foreground leading-[0.94] tracking-[-0.04em] transition-transform duration-400 ease-out-soft"
+      style={{ transform: `translate(${mx * -12}px, ${my * -6}px)` }}
+    >
+      <span className="relative inline-block font-mono">
+        <span
+          aria-hidden
+          className="absolute top-0 -left-0.5 text-chart-1 opacity-60 mix-blend-screen"
+        >
+          yogyy
+        </span>
+        <span className="relative">yogyy</span>
+      </span>
+      <span className="mt-5 block font-normal text-[0.4em] text-foreground/70 leading-[1.4] tracking-[-0.008em]">
+        ↳ Full-stack <span className="text-chart-1">TypeScript</span> engineer
+        <span className="caret" />
+      </span>
+    </motion.h1>
+  )
+}
