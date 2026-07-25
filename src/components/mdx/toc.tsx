@@ -8,7 +8,8 @@ interface TocProps {
 
 export function DashboardTableOfContents({ toc }: TocProps) {
   const itemIds = useMemo(
-    () => toc?.map((item) => item.url.replace('#', '')).filter(Boolean) ?? [],
+    () =>
+      toc?.flatMap((item) => item.url.replace('#', '')).filter(Boolean) ?? [],
     [toc],
   )
 
@@ -73,12 +74,7 @@ function useActiveItem(itemIds: string[]) {
       if (element) observer.observe(element)
     })
 
-    return () => {
-      itemIds.forEach((id) => {
-        const element = document.getElementById(id)
-        if (element) observer.unobserve(element)
-      })
-    }
+    return () => observer.disconnect()
   }, [itemIds]) // Re-run hanya jika ID list berubah
 
   return activeId

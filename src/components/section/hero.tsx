@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { socialItems } from '#/lib/constant'
 import { useMouseInside } from '#/lib/hooks/use-mouse-inside'
@@ -32,7 +32,7 @@ export default function HeroSection() {
       ref={rootRef}
       className="relative mx-auto -mt-14 flex min-h-dvh max-w-7xl flex-col justify-center px-6 md:px-12"
     >
-      <motion.div
+      <m.div
         {...fadeUp}
         className="mb-9 flex items-center gap-4 font-mono text-foreground/70 text-xs uppercase tracking-[0.08em]"
       >
@@ -45,20 +45,20 @@ export default function HeroSection() {
             <p className="font-mono">Tangerang Regency</p>
           </TooltipContent>
         </Tooltip>
-      </motion.div>
+      </m.div>
 
       <GlitchHero mx={mx} my={my} />
 
-      <motion.p
+      <m.p
         {...fadeUp}
         transition={{ ...fadeUp.transition, delay: 0.15 }}
         className="mt-10 max-w-3xl text-foreground/80 leading-[1.6] sm:text-lg"
       >
         I enjoy building fast, reliable web applications with TypeScript and
         modern web technologies.
-      </motion.p>
+      </m.p>
 
-      <motion.div
+      <m.div
         {...fadeUp}
         transition={{ ...fadeUp.transition, delay: 0.3 }}
         className="mt-6 flex flex-wrap items-center gap-4 font-mono text-foreground/60 text-xs lowercase tracking-[0.06em]"
@@ -92,14 +92,14 @@ export default function HeroSection() {
             </span>
           )
         })}
-      </motion.div>
+      </m.div>
     </section>
   )
 }
 
 function GlitchHero({ mx, my }: { mx: number; my: number }) {
   return (
-    <motion.h1
+    <m.h1
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: REVEAL_EASE, delay: 0.05 }}
@@ -119,6 +119,6 @@ function GlitchHero({ mx, my }: { mx: number; my: number }) {
         ↳ Full-stack <span className="text-chart-1">TypeScript</span> engineer
         <span className="caret" />
       </span>
-    </motion.h1>
+    </m.h1>
   )
 }

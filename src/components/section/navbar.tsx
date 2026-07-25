@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { navItems } from '#/lib/constant'
 import { cn } from '#/lib/utils.ts'
-import { FileDownloadIcon } from '../icons/internal'
+import { FileDownloadIcon } from '../icons/internal/file-download'
 
 export default function Navbar() {
   return (

@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Image } from '@unpic/react'
 import type { Project } from 'content-collections'
-import { ArrowRight } from './icons/internal'
+import { ArrowRight } from './icons/internal/arrow-right'
 import { Icon } from './project-card-icon'
 
 interface ProjectCardProps {

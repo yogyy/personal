@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { allProjects } from 'content-collections'
-import { domAnimation, LazyMotion, motion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { domAnimation, LazyMotion, m } from 'motion/react'
 import { DocsPageHeader } from '#/components/mdx/header.tsx'
 import { ProjectCard } from '#/components/project-card.tsx'
-import { fadeUp, REVEAL_EASE } from '#/lib/motion'
+import { fadeUp } from '#/lib/motion'
 
 export const Route = createFileRoute('/projects/')({
   component: ProjectRoute,

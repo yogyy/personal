@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { allPosts } from 'content-collections'
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { DocsPageHeader } from '#/components/mdx/header.tsx'
 import { fadeUp } from '#/lib/motion.ts'
 
@@ -14,7 +14,7 @@ function ProjectRoute() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 mt-8 md:mt-16">
-      <motion.div
+      <m.div
         initial={{ filter: 'opacity(0)' }}
         animate={{ filter: 'opacity(1)' }}
         transition={{ ...fadeUp.transition, delay: 0.15, ease: 'easeOut' }}
@@ -23,7 +23,7 @@ function ProjectRoute() {
           heading="Showcase of my works"
           text="Explore my projects and get to know more about my work and skills."
         />
-      </motion.div>
+      </m.div>
       <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {posts?.map((post) => (
           <li key={post.title} className="flex">
