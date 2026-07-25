@@ -1,111 +1,81 @@
-import { useEffect, useMemo, useState } from 'react';
-import { TableOfContents } from '@/lib/toc';
-import { cn } from '@/lib/utils';
-import { useIsClient } from '@/hooks/use-is-client';
+import { useEffect, useMemo, useState } from 'react'
+import type { TocItem } from '@/lib/toc'
+import { cn } from '@/lib/utils'
 
 interface TocProps {
-  toc: TableOfContents;
+  toc: TocItem[]
 }
 
 export function DashboardTableOfContents({ toc }: TocProps) {
   const itemIds = useMemo(
     () =>
-      toc.items
-        ? toc.items
-            .flatMap(item => [item.url, item?.items?.map(item => item.url)])
-            .flat()
-            .filter(Boolean)
-            .map(id => id?.split('#')[1])
-        : [],
+      toc?.flatMap((item) => item.url.replace('#', '')).filter(Boolean) ?? [],
     [toc],
-  );
-  const activeHeading = useActiveItem(itemIds);
-  const client = useIsClient();
+  )
 
-  if (!toc?.items) {
-    return null;
+  const activeHeading = useActiveItem(itemIds)
+
+  if (!toc || toc.length === 0) {
+    return null
   }
 
-  return client ? (
+  return (
     <div className="space-y-2">
-      <p className="font-medium">Table of Contents</p>
-      <Tree tree={toc} activeItem={activeHeading} />
+      <p className="font-medium text-sm">Table of Contents</p>
+      <ul className="m-0 list-none space-y-1 text-sm">
+        {toc.map((item) => {
+          const isActive = item.url === `#${activeHeading}`
+
+          return (
+            <li
+              key={item.url}
+              // Indentasi otomatis berdasarkan level heading (level 2, 3, dst)
+              style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
+            >
+              <a
+                href={item.url}
+                className={cn(
+                  'inline-block border-transparent border-l-2 pl-2 no-underline transition-colors',
+                  isActive
+                    ? 'border-primary font-medium text-primary'
+                    : 'text-foreground/70 hover:text-foreground',
+                )}
+              >
+                {item.title}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
     </div>
-  ) : null;
+  )
 }
 
-function useActiveItem(itemIds: (string | undefined)[]) {
-  const [activeId, setActiveId] = useState<string>('');
+// Hook IntersectionObserver (Tetap sama, hanya lebih bersih)
+function useActiveItem(itemIds: string[]) {
+  const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
+    if (!itemIds.length) return
+
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+            setActiveId(entry.target.id)
           }
-        });
+        })
       },
       { rootMargin: `0% 0% -80% 0%` },
-    );
+    )
 
-    itemIds?.forEach(id => {
-      if (!id) {
-        return;
-      }
+    itemIds.forEach((id) => {
+      const element = document.getElementById(id)
+      if (element) observer.observe(element)
+    })
 
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
+    return () => observer.disconnect()
+  }, [itemIds]) // Re-run hanya jika ID list berubah
 
-    return () => {
-      itemIds?.forEach(id => {
-        if (!id) {
-          return;
-        }
-
-        const element = document.getElementById(id);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
-  }, [itemIds]);
-
-  return activeId;
-}
-
-interface TreeProps {
-  tree: TableOfContents;
-  level?: number;
-  activeItem?: string | null;
-}
-
-function Tree({ tree, level = 1, activeItem }: TreeProps) {
-  return tree?.items?.length && level < 3 ? (
-    <ul className={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
-      {tree.items.map((item, index) => {
-        return (
-          <li key={index} className={cn('mt-0 pt-2 [&>ul>li>a]:border')}>
-            <a
-              href={item.url}
-              className={cn(
-                'inline-block border-l-2 border-transparent pl-2 no-underline',
-                item.url === `#${activeItem}`
-                  ? 'border-primary font-medium text-primary/80'
-                  : 'text-foreground/70',
-              )}
-            >
-              {item.title}
-            </a>
-            {item.items?.length ? (
-              <Tree tree={item} level={level + 1} activeItem={activeItem} />
-            ) : null}
-          </li>
-        );
-      })}
-    </ul>
-  ) : null;
+  return activeId
 }

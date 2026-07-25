@@ -1,0 +1,12 @@
+{
+  "$schema": "https://react.doctor/schema/config.json",
+  "ignore": {
+    "rules": ["react-doctor/no-danger"],
+    "files": ["content-collections.ts", "src/components/theme-provider.tsx"],
+    "overrides": []
+  },
+  "rules": {},
+  "categories": {
+    "Maintainability": "warn"
+  }
+}

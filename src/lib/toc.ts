@@ -1,78 +1,30 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-// TODO: Fix this when we turn strict mode on.
-
-import { toc } from 'mdast-util-toc';
-import { remark } from 'remark';
-import { visit } from 'unist-util-visit';
-
-const textTypes = ['text', 'emphasis', 'strong', 'inlineCode'];
-
-function flattenNode(node) {
-  const p = [];
-  visit(node, node => {
-    if (!textTypes.includes(node.type)) return;
-    p.push(node.value);
-  });
-  return p.join(``);
+export interface TocItem {
+  title: string
+  url: string
+  level: number
 }
 
-interface Item {
-  title: string;
-  url: string;
-  items?: Item[];
-}
+export function getTableOfContentsSimple(content: string): TocItem[] {
+  // 1. Hapus bagian frontmatter (--- ... ---) agar tidak terbaca sebagai heading
+  const cleanContent = content.replace(/^---[\s\S]*?---/, '')
 
-interface Items {
-  items?: Item[];
-}
+  // 2. Cari baris yang diawali #, ##, ###, dst.
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm
+  const toc: TocItem[] = []
 
-function getItems(node, current): Items {
-  if (!node) {
-    return {};
+  const matches = cleanContent.matchAll(headingRegex)
+
+  for (const match of matches) {
+    const level = match[1].length
+    const title = match[2].trim()
+
+    const url = `#${title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')}`
+
+    toc.push({ title, url, level })
   }
 
-  if (node.type === 'paragraph') {
-    visit(node, item => {
-      if (item.type === 'link') {
-        current.url = item.url;
-        current.title = flattenNode(node);
-      }
-
-      if (item.type === 'text') {
-        current.title = flattenNode(node);
-      }
-    });
-
-    return current;
-  }
-
-  if (node.type === 'list') {
-    current.items = node.children.map(i => getItems(i, {}));
-
-    return current;
-  } else if (node.type === 'listItem') {
-    const heading = getItems(node.children[0], {});
-
-    if (node.children.length > 1) {
-      getItems(node.children[1], heading);
-    }
-
-    return heading;
-  }
-
-  return {};
-}
-
-const getToc = () => (node, file) => {
-  const table = toc(node);
-  file.data = getItems(table.map, {});
-};
-
-export type TableOfContents = Items;
-
-export async function getTableOfContents(content: string): Promise<TableOfContents> {
-  const result = await remark().use(getToc).process(content);
-
-  return result.data;
+  return toc
 }
