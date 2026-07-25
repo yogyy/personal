@@ -2,7 +2,7 @@
   "git": {
     "deploymentEnabled": {
       "main": true,
-      "preview": false
+      "tanstack": false
     }
   },
   "framework": "tanstack-start"
