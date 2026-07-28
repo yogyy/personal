@@ -22,7 +22,7 @@ function RouteComponent() {
 
   if (toc.length === 0) return null
   return (
-    <section className="max-w-7xl mx-auto px-6 md:px-12 my-4">
+    <section className="mx-auto my-4 max-w-7xl px-6 md:px-12">
       <div>
         <Image
           alt={`Project ${project.description}`}
@@ -35,13 +35,13 @@ function RouteComponent() {
         />
       </div>
       <div>
-        <h1 className="mt-4 text-primary text-4xl font-bold">
+        <h1 className="mt-4 font-bold text-4xl text-primary">
           {project.title}
         </h1>
-        <p className="mt-2 text-sm text-foreground">{project.description}</p>
-        <div className="mt-2 flex flex-wrap items-center justify-start gap-3 text-sm font-medium text-foreground">
+        <p className="mt-2 text-foreground text-sm">{project.description}</p>
+        <div className="mt-2 flex flex-wrap items-center justify-start gap-3 font-medium text-foreground text-sm">
           <div className="flex items-center gap-1.5">
-            <UserRound className="h-[18px] w-[18px]" />
+            <UserRound className="h-4.5 w-4.5" />
             <p className="flex items-center justify-start gap-2 text-sm transition-colors duration-300">
               {project.category}
             </p>
@@ -50,7 +50,7 @@ function RouteComponent() {
           <div className="inline-flex items-center gap-1.5">
             <GithubIcon className="text-lg" />
             <Link
-              className="animated-underline inline-flex items-center border-b border-dotted border-accent font-medium focus:outline-none"
+              className="animated-underline inline-flex items-center border-accent border-b border-dotted font-medium focus:outline-none"
               to={project.github}
             >
               Repository
@@ -58,9 +58,9 @@ function RouteComponent() {
           </div>
           <span>-</span>
           <div className="inline-flex items-center gap-1.5">
-            <LinkIcon className="h-[18px] w-[18px]" />
+            <LinkIcon className="h-4.5 w-4.5" />
             <Link
-              className="animated-underline inline-flex items-center border-b border-dotted border-accent font-medium focus:outline-none"
+              className="animated-underline inline-flex items-center border-accent border-b border-dotted font-medium focus:outline-none"
               to={project.url}
             >
               Open Live Site
@@ -79,7 +79,7 @@ function RouteComponent() {
         </div>
         <hr className="mt-1 border" />
         <div className="py-6 lg:grid lg:grid-cols-[auto_250px] lg:gap-8">
-          <article className="h-full w-full min-w-0 max-w-5xl marker:text-primary prose-headings:text-primary">
+          <article className="h-full w-full min-w-0 max-w-5xl prose-headings:text-primary marker:text-primary">
             <MdxContent code={project.mdx} />
             <div className="hidden h-60 bg-transparent lg:block" />
           </article>

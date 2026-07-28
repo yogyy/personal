@@ -25,7 +25,7 @@ export const Route = createFileRoute('/posts/$postId')({
 function RouteComponent() {
   const post = Route.useLoaderData()
   return (
-    <div className="max-w-7xl mx-auto px-6 md:px-12 mt-6">
+    <div className="mx-auto mt-6 max-w-7xl px-6 md:px-12">
       <MdxContent code={post.mdx} />
     </div>
   )

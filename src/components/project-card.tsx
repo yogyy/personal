@@ -1,7 +1,7 @@
-import { Link } from '@tanstack/react-router'
 import { Image } from '@unpic/react'
 import type { Project } from 'content-collections'
 import { ArrowRight } from './icons/internal/arrow-right'
+import { LinkMotion } from './link-motion'
 import { Icon } from './project-card-icon'
 
 interface ProjectCardProps {
@@ -10,11 +10,8 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <li className="project-card group w-full overflow-hidden rounded-md border bg-card focus-within:border-chart-1/50 hover:border-chart-1/50">
-      <Link
-        to={project._meta.path}
-        className="projectcard flex h-full w-full flex-col items-start rounded-md p-4 focus:outline-none"
-      >
+    <LinkMotion to={`/projects/${project._meta.path}`}>
+      <div className="flex h-full w-full flex-col items-start rounded-md p-4">
         <div className="mb-1 flex w-full flex-wrap sm:mb-0">
           <h1 className="mr-auto font-mono font-semibold text-foreground/80 text-xl transition-colors group-focus-within:text-chart-1 group-hover:text-chart-1">
             {project.title}
@@ -38,9 +35,9 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         />
         <p className="animated-underline mt-2 flex items-center gap-1 place-self-end font-medium text-foreground">
           See more
-          <ArrowRight className="h-[18px] w-[18px] transition-colors group-focus-within:text-chart-1 group-hover:text-chart-1" />
+          <ArrowRight className="h-4.5 w-4.5 transition-colors group-focus-within:text-chart-1 group-hover:text-chart-1" />
         </p>
-      </Link>
-    </li>
+      </div>
+    </LinkMotion>
   )
 }
