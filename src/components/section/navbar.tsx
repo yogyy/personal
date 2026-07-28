@@ -5,14 +5,14 @@ import { FileDownloadIcon } from '../icons/internal/file-download'
 
 export default function Navbar() {
   return (
-    <header className="sticky inset-x-0 top-0 z-30">
+    <header className="sticky inset-x-0 top-0 z-30 shadow-[0_1px_0_0_var(--color-border)]">
       <a
         href="#skip-nav"
         className="group absolute top-1 left-4 z-20 -translate-y-16 rounded-sm bg-background p-2 font-medium text-foreground transition focus:translate-y-0 focus:outline-none focus:ring focus:ring-chart-1"
       >
         skip to content
       </a>
-      <nav className="mx-auto grid w-full max-w-7xl grid-cols-[auto_1fr] items-center gap-6 bg-[color-mix(in_oklab,var(--color-background)_80%,transparent)] px-3 shadow-[0_1px_0_0_var(--color-border)] backdrop-blur-md backdrop-saturate-150 sm:px-5 md:px-10">
+      <nav className="mx-auto grid w-full max-w-7xl grid-cols-[auto_1fr] items-center gap-6 bg-[color-mix(in_oklab,var(--color-background)_80%,transparent)] px-3 backdrop-blur-md backdrop-saturate-150 sm:px-5 md:px-10">
         <Link to="/" className="flex items-baseline gap-1 py-3.5 no-underline">
           <span className="inline-flex items-baseline gap-0.5">
             <span className="font-medium text-foreground text-lg tracking-[-0.03em]">
