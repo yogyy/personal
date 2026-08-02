@@ -13,15 +13,15 @@ export default function Navbar() {
         skip to content
       </a>
       <nav className="mx-auto grid w-full max-w-7xl grid-cols-[auto_1fr] items-center gap-6 bg-[color-mix(in_oklab,var(--color-background)_80%,transparent)] px-3 backdrop-blur-md backdrop-saturate-150 sm:px-5 md:px-10">
-        <Link to="/" className="flex items-baseline gap-1 py-3.5 no-underline">
-          <span className="inline-flex items-baseline gap-0.5">
+        <Link to="/" className="p-3.5 no-underline">
+          <span className="inline-flex items-baseline">
             <span className="font-medium text-foreground text-lg tracking-[-0.03em]">
               yg
             </span>
           </span>
         </Link>
 
-        <div className="flex items-center justify-end font-mono">
+        <div className="flex items-center justify-end gap-1 font-mono">
           {navItems.map((item) => (
             <Link
               key={item.label}

@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { domAnimation, LazyMotion } from 'motion/react'
+import { Footer } from '#/components/footer.tsx'
 import PostHogProvider from '#/components/integrations/posthog-provider.tsx'
 import Navbar from '#/components/section/navbar'
 import NotFoundPage from '#/components/section/not-found.tsx'
@@ -51,7 +52,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <LazyMotion features={domAnimation}>
               <TooltipProvider>
                 <Navbar />
-                <main id="skip-nav">{children}</main>
+                <main id="skip-nav" className="h-dvh">
+                  {children}
+                </main>
+                <Footer />
               </TooltipProvider>
             </LazyMotion>
           </ThemeProvider>

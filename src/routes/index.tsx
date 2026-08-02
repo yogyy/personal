@@ -6,9 +6,5 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
-  return (
-    <>
-      <HeroSection />
-    </>
-  )
+  return <HeroSection />
 }
