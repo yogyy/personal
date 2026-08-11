@@ -2,6 +2,7 @@ import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { domAnimation, LazyMotion } from 'motion/react'
 import { Footer } from '#/components/footer.tsx'
 import PostHogProvider from '#/components/integrations/posthog-provider.tsx'
+import RulerLines from '#/components/ruler-lines.tsx'
 import Navbar from '#/components/section/navbar'
 import NotFoundPage from '#/components/section/not-found.tsx'
 import { ThemeProvider } from '#/components/theme-provider'
@@ -19,7 +20,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Yogyy · Full-Stack Web Developer',
+        title: 'yogyy/index · Web Developer',
       },
       {
         name: 'description',
@@ -51,11 +52,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <ThemeProvider defaultTheme="system" storageKey="theme">
             <LazyMotion features={domAnimation}>
               <TooltipProvider>
-                <Navbar />
-                <main id="skip-nav" className="h-dvh">
-                  {children}
-                </main>
-                <Footer />
+                <div className="relative mx-auto min-h-dvh w-full max-w-400">
+                  <RulerLines variant="left" />
+                  <Navbar />
+                  <div className="px-4 md:px-8">
+                    <main id="skip-nav" className="min-h-dvh px-[2%]">
+                      {children}
+                    </main>
+                  </div>
+                  <Footer />
+                  <RulerLines variant="right" />
+                </div>
               </TooltipProvider>
             </LazyMotion>
           </ThemeProvider>

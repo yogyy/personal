@@ -34,8 +34,4 @@ export const navItems = [
     label: 'projects',
     href: '/projects',
   },
-  {
-    label: 'resume',
-    href: '/',
-  },
 ]

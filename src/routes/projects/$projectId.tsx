@@ -22,7 +22,7 @@ function RouteComponent() {
 
   if (toc.length === 0) return null
   return (
-    <section className="mx-auto my-4 max-w-7xl px-6 md:px-12">
+    <section className="mx-auto my-4 max-w-400 px-6 md:px-12">
       <div>
         <Image
           alt={`Project ${project.description}`}

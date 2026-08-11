@@ -8,6 +8,9 @@ import { fadeUp } from '#/lib/motion.ts'
 export const Route = createFileRoute('/posts/')({
   component: ProjectRoute,
   loader: () => allPosts,
+  head: () => ({
+    meta: [{ title: 'yogyy/posts · Web Developer' }],
+  }),
 })
 
 const list = {
@@ -28,22 +31,20 @@ function ProjectRoute() {
   const posts = Route.useLoaderData()
 
   return (
-    <div className="mx-auto mt-8 max-w-7xl px-6 md:mt-16 md:px-12">
+    <div className="mx-auto pt-8">
       <m.div
         initial={{ filter: 'opacity(0)' }}
         animate={{ filter: 'opacity(1)' }}
         transition={{ ...fadeUp.transition, delay: 0.15, ease: 'easeIn' }}
       >
-        <DocsPageHeader
-          heading="Showcase of my works"
-          text="Explore my projects and get to know more about my work and skills."
-        />
+        <DocsPageHeader heading="Posts" text="Some of my posts" />
       </m.div>
+      <div className="absolute left-0 mt-1.75 w-full border-t-2"></div>
       <m.ul
         variants={list}
         initial="initial"
         animate="animate"
-        className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2"
+        className="grid grid-cols-1 gap-4 pt-10 md:grid-cols-3"
       >
         {posts?.map((post) => (
           <m.li
