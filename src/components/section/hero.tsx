@@ -30,7 +30,7 @@ export default function HeroSection() {
   return (
     <section
       ref={rootRef}
-      className="relative mx-auto -mt-14 flex min-h-dvh max-w-7xl flex-col justify-center px-6 md:px-12"
+      className="relative -mt-14 flex min-h-dvh flex-col justify-center px-6"
     >
       <m.div
         {...fadeUp}

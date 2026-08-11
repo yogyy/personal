@@ -2,10 +2,10 @@ import { GithubIcon } from '#/components/icons/simple-icons'
 
 export function Footer() {
   return (
-    <footer className="border py-2 font-medium font-mono text-foreground/90">
-      <div className="mx-auto grid w-full max-w-7xl">
-        <div className="flex items-center justify-between px-4">
-          <p className="text-sm">&copy; yogyy 2026</p>
+    <footer className="mx-auto w-full max-w-400 border-t-2">
+      <div className="px-4 text-muted-foreground sm:px-5 md:px-10">
+        <div className="flex items-center justify-between py-2">
+          <p className="text-sm">&copy; 2026 yogyy </p>
           <div className="flex space-x-4">
             <a
               href="https://github.com/yogyy"
