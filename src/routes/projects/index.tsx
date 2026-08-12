@@ -47,14 +47,10 @@ function ProjectRoute() {
         variants={list}
         initial="initial"
         animate="animate"
-        className="grid gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3"
+        className="relative grid gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects?.map((project) => (
-          <m.li
-            key={project._meta.path}
-            variants={item}
-            className="project-card"
-          >
+          <m.li key={project._meta.path} variants={item}>
             <ProjectCard project={project} />
           </m.li>
         ))}
